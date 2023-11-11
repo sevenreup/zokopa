@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -44,12 +45,21 @@ class HomeScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                "Explore Lilongwe!",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(fontWeight: FontWeight.bold),
+              child: RichText(
+                text: TextSpan(
+                    text: "Explore ",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                    children: [
+                      TextSpan(
+                          text: 'Lilongwe!',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(fontWeight: FontWeight.w200)),
+                    ]),
               ),
             ),
           ),
@@ -149,7 +159,9 @@ class HomeScreen extends StatelessWidget {
                                 ?.copyWith(fontWeight: FontWeight.w200),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.push("/ar");
+                            },
                             child: const Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.start,
